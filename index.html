@@ -6,192 +6,195 @@
     <title>Wikipedia</title>
 
     <style>
-        body {
-            font-family: "Segoe UI", Roboto, Arial, sans-serif;
-            background: #f6f7f9;
-            margin: 0;
-            color: #202122;
-        }
 
-        header {
-            background: #ffffff;
-            border-bottom: 1px solid #dadce0;
-            padding: 18px 40px;
-            font-size: 16px;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-        }
+body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    background:#0e0e0e;
+    margin:0;
+    color:#202122;
+}
 
-        .container {
-            width: 1000px;
-            margin: 40px auto;
-            background: white;
-            padding: 40px;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-        }
+/* HEADER */
 
-        h1 {
-            font-size: 38px;
-            margin-bottom: 5px;
-            font-weight: 600;
-        }
+.topbar{
+    background:white;
+    border-bottom:1px solid #dadce0;
+    padding:12px 30px;
+    display:flex;
+    align-items:center;
+    box-shadow:0 1px 3px rgba(0,0,0,0.08);
+}
 
-        .subtitle {
-            color: #6b7280;
-            margin-bottom: 30px;
-            font-size: 16px;
-        }
+.logo{
+    display:flex;
+    align-items:center;
+    font-size:20px;
+    font-weight:600;
+}
 
-        .infobox {
-            float: right;
-            width: 270px;
-            border: 1px solid #d0d7de;
-            background: #f9fafb;
-            padding: 15px;
-            margin: 10px 0 20px 30px;
-            font-size: 14px;
-            border-radius: 6px;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-        }
+.logo img{
+    width:38px;
+    margin-right:10px;
+}
 
-        .infobox img {
-            width: 100%;
-            border-radius: 4px;
-            margin-bottom: 10px;
-        }
+/* CONTAINER DO ARTIGO */
 
-        .infobox h3 {
-            text-align: center;
-            margin: 5px 0 10px 0;
-            font-size: 18px;
-        }
+.container{
+    max-width:1000px;
+    margin:40px auto;
+    background:white;
+    padding:35px 45px;
+    border:1px solid #dadce0;
+    box-shadow:0 3px 12px rgba(0,0,0,0.15);
+}
 
-        .infobox table {
-            width: 100%;
-            font-size: 13px;
-        }
+/* TÍTULOS */
 
-        .infobox td {
-            padding: 6px 4px;
-            border-bottom: 1px solid #eee;
-        }
+h1{
+    font-size:34px;
+    margin-bottom:4px;
+    font-weight:400;
+}
 
-        h2 {
-            border-bottom: 2px solid #e5e7eb;
-            padding-bottom: 6px;
-            margin-top: 45px;
-            font-size: 24px;
-            font-weight: 600;
-        }
+.subtitle{
+    color:#6a6a6a;
+    margin-bottom:25px;
+    font-size:14px;
+}
 
-        p {
-            line-height: 1.7;
-            font-size: 15px;
-            margin: 14px 0;
-        }
+h2{
+    border-bottom:1px solid #dadce0;
+    padding-bottom:6px;
+    margin-top:40px;
+    font-size:22px;
+    font-weight:500;
+}
 
-        .quote {
-            background: #f9fafb;
-            border-left: 5px solid #3b82f6;
-            padding: 18px;
-            font-style: italic;
-            margin: 25px 0;
-            border-radius: 4px;
-            font-size: 15px;
-        }
+/* TEXTO */
 
-        .timeline {
-            background: #f9fafb;
-            padding: 18px;
-            border-left: 5px solid #6366f1;
-            margin: 25px 0;
-            border-radius: 4px;
-        }
+p{
+    line-height:1.7;
+    font-size:14.5px;
+    margin:14px 0;
+}
 
-        .timeline p {
-            margin: 10px 0;
-        }
+/* LINKS */
 
-        .timeline b {
-            color: #4f46e5;
-        }
+a{
+    color:#3366cc;
+    text-decoration:none;
+}
 
-        ul {
-            padding-left: 20px;
-        }
+a:hover{
+    text-decoration:underline;
+}
 
-        li {
-            margin: 6px 0;
-        }
+/* INFOBOX */
 
-        button {
-            padding: 12px 20px;
-            border: none;
-            background: #2563eb;
-            color: white;
-            cursor: pointer;
-            margin-top: 12px;
-            border-radius: 6px;
-            font-size: 14px;
-            font-weight: 600;
-            transition: 0.2s;
-        }
+.infobox{
+    float:right;
+    width:260px;
+    border:1px solid #dadce0;
+    background:#f8f9fa;
+    font-size:14px;
+    margin:0 0 20px 25px;
+}
 
-        button:hover {
-            background: #1d4ed8;
-            transform: translateY(-1px);
-        }
+.infobox h3{
+    background:#eaecf0;
+    text-align:center;
+    padding:9px;
+    margin:0;
+    font-size:16px;
+    font-weight:600;
+}
 
-        .references {
-            font-size: 13px;
-            background: #f9fafb;
-            padding: 18px;
-            margin-top: 20px;
-            border-radius: 6px;
-            border: 1px solid #e5e7eb;
-        }
+.infobox img{
+    width:100%;
+}
 
-        .references p {
-            margin: 6px 0;
-        }
+.infobox table{
+    width:100%;
+    border-collapse:collapse;
+}
 
-        .footer {
-            margin-top: 50px;
-            font-size: 13px;
-            color: #6b7280;
-            border-top: 1px solid #e5e7eb;
-            padding-top: 15px;
-            text-align: center;
-        }
+.infobox td{
+    padding:7px;
+    border-top:1px solid #eaecf0;
+}
 
-        sup {
-            color: #2563eb;
-            font-weight: 600;
-        }
+/* IMAGEM PRINCIPAL */
 
-        @media (max-width:1100px) {
+.main-image{
+    float:left;
+    width:420px;
+    margin:10px 25px 15px 0;
+    text-align:center;
+}
 
-            .container {
-                width: 90%;
-            }
+.main-image img{
+    width:100%;
+    border:1px solid #c8ccd1;
+    padding:4px;
+    background:white;
+}
 
-            .infobox {
-                float: none;
-                margin: 0 auto 20px auto;
-            }
+.main-image span{
+    display:block;
+    font-size:12px;
+    color:#54595d;
+    margin-top:6px;
+}
 
-        }
-    </style>
+/* CITAÇÃO */
+
+.quote{
+    background:#f8f9fa;
+    border-left:4px solid #a2a9b1;
+    padding:14px;
+    font-style:italic;
+    margin:25px 0;
+}
+
+/* TIMELINE */
+
+.timeline{
+    background:#f8f9fa;
+    padding:16px;
+    border-left:4px solid #a2a9b1;
+    margin:25px 0;
+}
+
+/* REFERÊNCIAS */
+
+.references{
+    font-size:12px;
+}
+
+/* FOOTER */
+
+.footer{
+    margin-top:50px;
+    font-size:12px;
+    color:#6a6a6a;
+    border-top:1px solid #dadce0;
+    padding-top:12px;
+}
+
+</style>
 
 </head>
 
 
 <body>
 
-    <header>
-        Wikipedia
+    <header class="topbar">
+
+        <div class="logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/63/Wikipedia-logo.png">
+            <span>Wikipédia</span>
+        </div>
+
     </header>
 
     <div class="container">
@@ -246,17 +249,25 @@
 
         <p>
             <b>Chaves</b> é um filósofo contemporâneo conhecido por fundar a corrente filosófica denominada
-            <b>Anti-Responsabilismo</b>, uma doutrina segundo a qual a responsabilidade individual é uma construção
-            social opcional e pode ser legitimamente transferida para outros indivíduos sempre que
-            conveniente<sup>[1]</sup>.
+            <b>Anti-Responsabilismo</b>, uma doutrina segundo a qual a responsabilidade individual é uma
+            construção social opcional e pode ser legitimamente transferida para outros indivíduos sempre que
+            conveniente.
         </p>
+
+        <div class="main-image">
+            <img src="chaves2.png">
+
+            <span>
+                Heitor Chaves ao lado de diversos filósofos clássicos da tradição ocidental.
+            </span>
+        </div>
 
         <p>
             Sua obra ganhou notoriedade principalmente em ambientes digitais, onde suas teorias foram amplamente
             discutidas em chamadas de voz conhecidas como <i>calls do Discord</i>, locais que, segundo o próprio
-            filósofo, funcionariam como portais metafísicos para universos paralelos de memória instável<sup>[2]</sup>.
+            filósofo, funcionariam como portais metafísicos para universos paralelos de memória instável.
         </p>
-
+<br><br><br><br><br>
         <h2>Biografia</h2>
 
         <p>
