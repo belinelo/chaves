@@ -6,182 +6,180 @@
     <title>Wikipedia</title>
 
     <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background: #0e0e0e;
+            margin: 0;
+            color: #202122;
+        }
 
-body{
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-    background:#0e0e0e;
-    margin:0;
-    color:#202122;
-}
+        /* HEADER */
 
-/* HEADER */
+        .topbar {
+            background: white;
+            border-bottom: 1px solid #dadce0;
+            padding: 12px 30px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+        }
 
-.topbar{
-    background:white;
-    border-bottom:1px solid #dadce0;
-    padding:12px 30px;
-    display:flex;
-    align-items:center;
-    box-shadow:0 1px 3px rgba(0,0,0,0.08);
-}
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 20px;
+            font-weight: 600;
+        }
 
-.logo{
-    display:flex;
-    align-items:center;
-    font-size:20px;
-    font-weight:600;
-}
+        .logo img {
+            width: 38px;
+            margin-right: 10px;
+        }
 
-.logo img{
-    width:38px;
-    margin-right:10px;
-}
+        /* CONTAINER DO ARTIGO */
 
-/* CONTAINER DO ARTIGO */
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            background: white;
+            padding: 35px 45px;
+            border: 1px solid #dadce0;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
+        }
 
-.container{
-    max-width:1000px;
-    margin:40px auto;
-    background:white;
-    padding:35px 45px;
-    border:1px solid #dadce0;
-    box-shadow:0 3px 12px rgba(0,0,0,0.15);
-}
+        /* TÍTULOS */
 
-/* TÍTULOS */
+        h1 {
+            font-size: 34px;
+            margin-bottom: 4px;
+            font-weight: 400;
+        }
 
-h1{
-    font-size:34px;
-    margin-bottom:4px;
-    font-weight:400;
-}
+        .subtitle {
+            color: #6a6a6a;
+            margin-bottom: 25px;
+            font-size: 14px;
+        }
 
-.subtitle{
-    color:#6a6a6a;
-    margin-bottom:25px;
-    font-size:14px;
-}
+        h2 {
+            border-bottom: 1px solid #dadce0;
+            padding-bottom: 6px;
+            margin-top: 40px;
+            font-size: 22px;
+            font-weight: 500;
+        }
 
-h2{
-    border-bottom:1px solid #dadce0;
-    padding-bottom:6px;
-    margin-top:40px;
-    font-size:22px;
-    font-weight:500;
-}
+        /* TEXTO */
 
-/* TEXTO */
+        p {
+            line-height: 1.7;
+            font-size: 14.5px;
+            margin: 14px 0;
+        }
 
-p{
-    line-height:1.7;
-    font-size:14.5px;
-    margin:14px 0;
-}
+        /* LINKS */
 
-/* LINKS */
+        a {
+            color: #3366cc;
+            text-decoration: none;
+        }
 
-a{
-    color:#3366cc;
-    text-decoration:none;
-}
+        a:hover {
+            text-decoration: underline;
+        }
 
-a:hover{
-    text-decoration:underline;
-}
+        /* INFOBOX */
 
-/* INFOBOX */
+        .infobox {
+            float: right;
+            width: 260px;
+            border: 1px solid #dadce0;
+            background: #f8f9fa;
+            font-size: 14px;
+            margin: 0 0 20px 25px;
+        }
 
-.infobox{
-    float:right;
-    width:260px;
-    border:1px solid #dadce0;
-    background:#f8f9fa;
-    font-size:14px;
-    margin:0 0 20px 25px;
-}
+        .infobox h3 {
+            background: #eaecf0;
+            text-align: center;
+            padding: 9px;
+            margin: 0;
+            font-size: 16px;
+            font-weight: 600;
+        }
 
-.infobox h3{
-    background:#eaecf0;
-    text-align:center;
-    padding:9px;
-    margin:0;
-    font-size:16px;
-    font-weight:600;
-}
+        .infobox img {
+            width: 100%;
+        }
 
-.infobox img{
-    width:100%;
-}
+        .infobox table {
+            width: 100%;
+            border-collapse: collapse;
+        }
 
-.infobox table{
-    width:100%;
-    border-collapse:collapse;
-}
+        .infobox td {
+            padding: 7px;
+            border-top: 1px solid #eaecf0;
+        }
 
-.infobox td{
-    padding:7px;
-    border-top:1px solid #eaecf0;
-}
+        /* IMAGEM PRINCIPAL */
 
-/* IMAGEM PRINCIPAL */
+        .main-image {
+            float: left;
+            width: 420px;
+            margin: 10px 25px 15px 0;
+            text-align: center;
+        }
 
-.main-image{
-    float:left;
-    width:420px;
-    margin:10px 25px 15px 0;
-    text-align:center;
-}
+        .main-image img {
+            width: 100%;
+            border: 1px solid #c8ccd1;
+            padding: 4px;
+            background: white;
+        }
 
-.main-image img{
-    width:100%;
-    border:1px solid #c8ccd1;
-    padding:4px;
-    background:white;
-}
+        .main-image span {
+            display: block;
+            font-size: 12px;
+            color: #54595d;
+            margin-top: 6px;
+        }
 
-.main-image span{
-    display:block;
-    font-size:12px;
-    color:#54595d;
-    margin-top:6px;
-}
+        /* CITAÇÃO */
 
-/* CITAÇÃO */
+        .quote {
+            background: #f8f9fa;
+            border-left: 4px solid #a2a9b1;
+            padding: 14px;
+            font-style: italic;
+            margin: 25px 0;
+        }
 
-.quote{
-    background:#f8f9fa;
-    border-left:4px solid #a2a9b1;
-    padding:14px;
-    font-style:italic;
-    margin:25px 0;
-}
+        /* TIMELINE */
 
-/* TIMELINE */
+        .timeline {
+            background: #f8f9fa;
+            padding: 16px;
+            border-left: 4px solid #a2a9b1;
+            margin: 25px 0;
+        }
 
-.timeline{
-    background:#f8f9fa;
-    padding:16px;
-    border-left:4px solid #a2a9b1;
-    margin:25px 0;
-}
+        /* REFERÊNCIAS */
 
-/* REFERÊNCIAS */
+        .references {
+            font-size: 12px;
+        }
 
-.references{
-    font-size:12px;
-}
+        /* FOOTER */
 
-/* FOOTER */
-
-.footer{
-    margin-top:50px;
-    font-size:12px;
-    color:#6a6a6a;
-    border-top:1px solid #dadce0;
-    padding-top:12px;
-}
-
-</style>
+        .footer {
+            margin-top: 50px;
+            font-size: 12px;
+            color: #6a6a6a;
+            border-top: 1px solid #dadce0;
+            padding-top: 12px;
+        }
+    </style>
 
 </head>
 
@@ -229,7 +227,8 @@ a:hover{
                     <td><b>Ideias notáveis</b></td>
                     <td>
                         Transferência de responsabilidade<br>
-                        Universo Discordiano
+                        Universo Discordiano<br>
+                        Moralidade Conveniente
                     </td>
                 </tr>
 
@@ -267,7 +266,7 @@ a:hover{
             discutidas em chamadas de voz conhecidas como <i>calls do Discord</i>, locais que, segundo o próprio
             filósofo, funcionariam como portais metafísicos para universos paralelos de memória instável.
         </p>
-<br><br><br><br><br>
+        <br><br><br><br><br>
         <h2>Biografia</h2>
 
         <p>
@@ -298,6 +297,9 @@ a:hover{
             <p><b>2022</b> — Primeira teoria sobre universos alternativos em calls do Discord.</p>
 
             <p><b>2024</b> — Publicação informal do tratado <i>Sobre a Arte de Jogar a Culpa nos Outros</i>.</p>
+
+            <p><b>2025</b> — Formulação do Princípio da Moralidade Conveniente após o <i>Caso da Mercadoria
+                    Descartada</i>.</p>
 
             <p><b>2026</b> — Consolidação da Teoria do Universo Discordiano após extensas observações em calls.</p>
 
@@ -389,6 +391,39 @@ a:hover{
             republicado de natureza idêntica em seu próprio perfil.
         </p>
 
+        <h2>Princípio da Moralidade Conveniente</h2>
+
+        <p>
+            O Princípio da Moralidade Conveniente, formulado por Chaves a partir de
+            observações detalhadas sobre desejos materiais e suas frustrações,
+            estabelece que o juízo moral de um indivíduo não constitui um princípio
+            constante, mas um mecanismo intermitente acionado exclusivamente conforme
+            o seu próprio benefício.
+        </p>
+
+        <p>
+            Segundo essa formulação filosófica, enquanto há expectativa de ganho
+            pessoal, o erro alheio deixa de existir no plano ético e passa a habitar
+            apenas o plano logístico. No exato instante em que o benefício se torna
+            inacessível, contudo, a moral é prontamente reativada, e o mesmo ato
+            anteriormente desejado é retroativamente classificado como crime
+            imperdoável.
+        </p>
+
+        <div class="quote">
+            "Enquanto o erro alheio nos beneficia, ele não é erro — torna-se erro apenas no instante em que nos é
+            negado. Pois a moral só desperta quando o proveito adormece."
+        </div>
+
+        <p>
+            Essa teoria tornou-se amplamente conhecida após o chamado <i>Caso da
+                Mercadoria Descartada</i>, no qual Chaves implorou insistentemente pela
+            aquisição de um item de procedência ilícita e, ao ter sua oferta
+            frustrada pelo descarte do referido bem, denunciou veementemente o
+            portador como ladrão e atrasa-lado — categorias que, momentos antes,
+            não pareciam aplicáveis ao mesmo indivíduo.
+        </p>
+
         <h2>Controvérsias</h2>
 
         <p>
@@ -416,6 +451,7 @@ a:hover{
             <li><i>Assim Falou o Anti-Responsável</i></li>
             <li><i>Além do Bem, do Mal e da Responsabilidade</i></li>
             <li><i>Crítica da Razão Transferível</i></li>
+            <li><i>Tratado sobre o Errado que me Serve</i></li>
 
         </ul>
 
@@ -448,6 +484,8 @@ a:hover{
             <p>[3] Revista Acadêmica de Filosofia Aplicada. <i>Transferência de culpa e procrastinação intelectual</i>.
             </p>
 
+            <p>[4] Centro de Estudos sobre Ética Intermitente. <i>O erro como fenômeno condicional ao benefício</i>.</p>
+
         </div>
 
         <div class="footer">
@@ -468,7 +506,11 @@ a:hover{
 
             "Se ninguém lembra da call do Discord, então ela jamais ocorreu.",
 
-            "A filosofia existe para explicar por que outra pessoa deveria resolver o problema."
+            "A filosofia existe para explicar por que outra pessoa deveria resolver o problema.",
+
+            "O errado só existe a partir do instante em que deixa de me servir.",
+
+            "Ladrão é todo aquele que recusa a me vender o produto do roubo."
 
         ]
 
