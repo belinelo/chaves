@@ -3,85 +3,206 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Wikipedia</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Heitor Chaves – Wikipédia, a enciclopédia livre</title>
 
     <style>
+        :root {
+            --serif: Georgia, "Linux Libertine", "Times New Roman", serif;
+            --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            --text: #202122;
+            --text-soft: #54595d;
+            --text-faint: #72777d;
+            --link: #3366cc;
+            --link-visited: #795cb2;
+            --line-strong: #a2a9b1;
+            --line: #c8ccd1;
+            --line-soft: #eaecf0;
+            --panel: #f8f9fa;
+            --page: #f5f6f8;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background: #0e0e0e;
+            font-family: var(--sans);
+            background: var(--page);
             margin: 0;
-            color: #202122;
+            color: var(--text);
+            font-size: 15px;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+        }
+
+        ::selection {
+            background: #b5d4ff;
         }
 
         /* HEADER */
 
         .topbar {
-            background: white;
-            border-bottom: 1px solid #dadce0;
-            padding: 12px 30px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: #fff;
+            border-bottom: 1px solid var(--line);
+            padding: 10px 28px;
             display: flex;
             align-items: center;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+            justify-content: space-between;
+            gap: 20px;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
         }
 
-        .logo {
+        .brand {
             display: flex;
             align-items: center;
-            font-size: 20px;
-            font-weight: 600;
+            gap: 12px;
         }
 
-        .logo img {
-            width: 38px;
-            margin-right: 10px;
+        .brand img {
+            width: 44px;
+            height: 44px;
+        }
+
+        .wordmark {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.15;
+        }
+
+        .wordmark-title {
+            font-family: var(--serif);
+            font-size: 21px;
+            font-weight: 400;
+            letter-spacing: 0.2px;
+        }
+
+        .wordmark-tag {
+            font-size: 11.5px;
+            color: var(--text-soft);
+            font-style: italic;
+        }
+
+        .search {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            width: 260px;
+            max-width: 38vw;
+            border: 1px solid var(--line);
+            border-radius: 3px;
+            padding: 7px 10px;
+            background: #fff;
+        }
+
+        .search:focus-within {
+            border-color: var(--link);
+            box-shadow: 0 0 0 2px rgba(51, 102, 204, 0.15);
+        }
+
+        .search svg {
+            width: 16px;
+            height: 16px;
+            flex: none;
+            fill: var(--text-faint);
+        }
+
+        .search input {
+            border: none;
+            outline: none;
+            font: inherit;
+            font-size: 13.5px;
+            width: 100%;
+            color: var(--text);
+            background: transparent;
         }
 
         /* CONTAINER DO ARTIGO */
 
         .container {
-            max-width: 1000px;
-            margin: 40px auto;
-            background: white;
-            padding: 35px 45px;
-            border: 1px solid #dadce0;
-            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
+            max-width: 1040px;
+            margin: 28px auto 60px;
+            background: #fff;
+            padding: 38px 48px 44px;
+            border: 1px solid var(--line);
+            border-radius: 2px;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06), 0 8px 24px rgba(0, 0, 0, 0.05);
         }
 
         /* TÍTULOS */
 
         h1 {
-            font-size: 34px;
-            margin-bottom: 4px;
+            font-family: var(--serif);
+            font-size: 31px;
+            line-height: 1.25;
+            margin: 0 0 3px;
             font-weight: 400;
         }
 
         .subtitle {
-            color: #6a6a6a;
-            margin-bottom: 25px;
+            color: var(--text-soft);
             font-size: 14px;
+            margin: 0 0 6px;
+        }
+
+        .tagline {
+            font-size: 12.5px;
+            color: var(--text-faint);
+            border-bottom: 1px solid var(--line-strong);
+            padding-bottom: 10px;
+            margin-bottom: 6px;
         }
 
         h2 {
-            border-bottom: 1px solid #dadce0;
-            padding-bottom: 6px;
-            margin-top: 40px;
+            position: relative;
+            font-family: var(--serif);
+            border-bottom: 1px solid var(--line-strong);
+            padding-bottom: 5px;
+            margin-top: 34px;
             font-size: 22px;
-            font-weight: 500;
+            font-weight: 400;
+        }
+
+        h2::after {
+            content: "[ editar ]";
+            position: absolute;
+            right: 0;
+            bottom: 7px;
+            font-family: var(--sans);
+            font-size: 11px;
+            color: var(--link);
         }
 
         /* TEXTO */
 
         p {
-            line-height: 1.7;
-            font-size: 14.5px;
-            margin: 14px 0;
+            margin: 13px 0;
         }
 
         /* LINKS */
 
         a {
-            color: #3366cc;
+            color: var(--link);
             text-decoration: none;
+        }
+
+        a:visited {
+            color: var(--link-visited);
         }
 
         a:hover {
@@ -92,24 +213,37 @@
 
         .infobox {
             float: right;
-            width: 260px;
-            border: 1px solid #dadce0;
-            background: #f8f9fa;
-            font-size: 14px;
-            margin: 0 0 20px 25px;
+            width: 292px;
+            border: 1px solid var(--line-strong);
+            background: var(--panel);
+            font-size: 13px;
+            line-height: 1.5;
+            margin: 4px 0 20px 28px;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
         }
 
         .infobox h3 {
-            background: #eaecf0;
+            background: var(--line-soft);
+            border-bottom: 1px solid var(--line);
             text-align: center;
-            padding: 9px;
+            padding: 10px;
             margin: 0;
+            font-family: var(--serif);
             font-size: 16px;
-            font-weight: 600;
+            font-weight: 400;
         }
 
         .infobox img {
             width: 100%;
+            display: block;
+        }
+
+        .infobox-caption {
+            padding: 7px 10px;
+            font-size: 12px;
+            color: var(--text-soft);
+            text-align: center;
+            border-bottom: 1px solid var(--line-soft);
         }
 
         .infobox table {
@@ -118,8 +252,14 @@
         }
 
         .infobox td {
-            padding: 7px;
-            border-top: 1px solid #eaecf0;
+            padding: 8px 10px;
+            border-top: 1px solid var(--line-soft);
+            vertical-align: top;
+        }
+
+        .infobox td:first-child {
+            width: 96px;
+            color: var(--text-soft);
         }
 
         /* IMAGEM PRINCIPAL */
@@ -127,57 +267,288 @@
         .main-image {
             float: left;
             width: 420px;
-            margin: 10px 25px 15px 0;
+            margin: 6px 26px 16px 0;
             text-align: center;
         }
 
         .main-image img {
             width: 100%;
-            border: 1px solid #c8ccd1;
+            border: 1px solid var(--line);
             padding: 4px;
-            background: white;
+            background: #fff;
         }
 
         .main-image span {
             display: block;
             font-size: 12px;
-            color: #54595d;
+            color: var(--text-soft);
             margin-top: 6px;
+            line-height: 1.45;
         }
 
         /* CITAÇÃO */
 
         .quote {
-            background: #f8f9fa;
-            border-left: 4px solid #a2a9b1;
-            padding: 14px;
+            background: var(--panel);
+            border-left: 4px solid var(--line-strong);
+            border-radius: 0 2px 2px 0;
+            padding: 14px 18px;
+            font-family: var(--serif);
+            font-size: 16px;
             font-style: italic;
-            margin: 25px 0;
+            color: #2b2b2b;
+            margin: 22px 0;
         }
 
         /* TIMELINE */
 
         .timeline {
-            background: #f8f9fa;
-            padding: 16px;
-            border-left: 4px solid #a2a9b1;
-            margin: 25px 0;
+            background: var(--panel);
+            border: 1px solid var(--line-soft);
+            border-left: 4px solid var(--line-strong);
+            border-radius: 0 2px 2px 0;
+            padding: 8px 18px;
+            margin: 22px 0;
+        }
+
+        .timeline p {
+            margin: 9px 0;
+        }
+
+        /* ABAS (estilo Vector) */
+
+        .tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3px;
+            margin: 32px 0 0;
+            border-bottom: 1px solid var(--line-strong);
+            clear: both;
+        }
+
+        .tab {
+            position: relative;
+            font-family: var(--sans);
+            font-size: 14.5px;
+            color: var(--link);
+            background: linear-gradient(#fcfcfc, #f2f3f5);
+            border: 1px solid var(--line-strong);
+            border-bottom: none;
+            border-radius: 4px 4px 0 0;
+            padding: 10px 22px;
+            min-height: 44px;
+            margin-bottom: -1px;
+            cursor: pointer;
+            transition: background 150ms ease, color 150ms ease;
+        }
+
+        .tab:hover {
+            background: #eaecf0;
+        }
+
+        .tab[aria-selected="true"] {
+            background: #fff;
+            color: var(--text);
+            font-weight: 600;
+            border-bottom: 1px solid #fff;
+            box-shadow: inset 0 3px 0 var(--link);
+            cursor: default;
+        }
+
+        .tab:focus-visible {
+            outline: 2px solid var(--link);
+            outline-offset: -2px;
+        }
+
+        .painel[hidden] {
+            display: none;
+        }
+
+        .painel > h2:first-child {
+            margin-top: 26px;
+        }
+
+        /* CATÁLOGO DE OBRAS / DOSSIÊS */
+
+        .catalogo {
+            margin: 20px 0;
+        }
+
+        .obra {
+            border: 1px solid var(--line);
+            border-left: 4px solid var(--line-strong);
+            border-radius: 0 2px 2px 0;
+            background: var(--panel);
+            padding: 16px 20px;
+            margin: 16px 0;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+        }
+
+        .obra-titulo {
+            font-family: var(--serif);
+            font-size: 19px;
+            font-weight: 400;
+            font-style: italic;
+            margin: 0 0 3px;
+        }
+
+        .obra-sub {
+            font-size: 12px;
+            color: var(--text-soft);
+            margin: 0 0 12px;
+        }
+
+        .ficha {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+            margin: 10px 0 12px;
+            background: #fff;
+            border: 1px solid var(--line-soft);
+        }
+
+        .ficha td {
+            padding: 6px 10px;
+            border-top: 1px solid var(--line-soft);
+            vertical-align: top;
+        }
+
+        .ficha tr:first-child td {
+            border-top: none;
+        }
+
+        .ficha td:first-child {
+            width: 150px;
+            font-weight: 600;
+            color: var(--text-soft);
+            white-space: nowrap;
+        }
+
+        .obra p {
+            margin: 10px 0 0;
         }
 
         /* REFERÊNCIAS */
 
         .references {
-            font-size: 12px;
+            font-size: 12.5px;
+            color: var(--text-soft);
+            line-height: 1.55;
+        }
+
+        .references p {
+            margin: 6px 0;
+        }
+
+        /* BOTÃO (estilo MediaWiki "progressive") */
+
+        .btn-sabedoria {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: inherit;
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 1.2;
+            color: #fff;
+            background: #3366cc;
+            border: 1px solid #2a4b8d;
+            border-radius: 2px;
+            padding: 10px 18px;
+            min-height: 44px;
+            margin-top: 6px;
+            cursor: pointer;
+            transition: background 150ms ease, box-shadow 150ms ease;
+        }
+
+        .btn-sabedoria::before {
+            content: "";
+            width: 16px;
+            height: 16px;
+            background: currentColor;
+            -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M10 1l2.4 5.1 5.6.7-4.1 3.9 1.1 5.6L10 19.4V1z' opacity='.6'/%3E%3Cpath d='M10 1L7.6 6.1 2 6.8l4.1 3.9L5 16.3 10 13.6V1z'/%3E%3C/svg%3E") center / contain no-repeat;
+            mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M10 1l2.4 5.1 5.6.7-4.1 3.9 1.1 5.6L10 19.4V1z' opacity='.6'/%3E%3Cpath d='M10 1L7.6 6.1 2 6.8l4.1 3.9L5 16.3 10 13.6V1z'/%3E%3C/svg%3E") center / contain no-repeat;
+        }
+
+        .btn-sabedoria:hover {
+            background: #2a4b8d;
+            border-color: #2a4b8d;
+        }
+
+        .btn-sabedoria:active {
+            background: #223766;
+        }
+
+        .btn-sabedoria:focus-visible {
+            outline: 2px solid #3366cc;
+            outline-offset: 2px;
         }
 
         /* FOOTER */
 
         .footer {
-            margin-top: 50px;
+            margin-top: 46px;
             font-size: 12px;
-            color: #6a6a6a;
-            border-top: 1px solid #dadce0;
-            padding-top: 12px;
+            color: var(--text-faint);
+            border-top: 1px solid var(--line);
+            padding-top: 14px;
+        }
+
+        .clear-left {
+            clear: left;
+        }
+
+        /* RESPONSIVO */
+
+        @media (max-width: 720px) {
+            .topbar {
+                padding: 9px 14px;
+            }
+
+            .search {
+                display: none;
+            }
+
+            .container {
+                margin: 0;
+                padding: 20px 15px 30px;
+                border-left: none;
+                border-right: none;
+                border-radius: 0;
+                box-shadow: none;
+            }
+
+            .infobox {
+                float: none;
+                width: 100%;
+                margin: 0 0 22px;
+            }
+
+            .main-image {
+                float: none;
+                width: 100%;
+                max-width: 420px;
+                margin: 0 auto 18px;
+            }
+
+            h1 {
+                font-size: 27px;
+            }
+
+            h2 {
+                font-size: 20px;
+            }
+
+            h2::after {
+                display: none;
+            }
+
+            .tab {
+                flex: 1 1 auto;
+                text-align: center;
+                font-size: 13.5px;
+                padding: 11px 10px;
+            }
         }
     </style>
 
@@ -188,9 +559,19 @@
 
     <header class="topbar">
 
-        <div class="logo">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/6/63/Wikipedia-logo.png">
-            <span>Wikipédia</span>
+        <div class="brand">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/63/Wikipedia-logo.png" alt="Logo da Wikipédia">
+            <div class="wordmark">
+                <span class="wordmark-title">Wikipédia</span>
+                <span class="wordmark-tag">A enciclopédia livre</span>
+            </div>
+        </div>
+
+        <div class="search">
+            <svg viewBox="0 0 20 20" aria-hidden="true">
+                <path d="M12.9 14.32a8 8 0 1 1 1.41-1.41l5.35 5.33-1.42 1.42-5.33-5.34zM8 14A6 6 0 1 0 8 2a6 6 0 0 0 0 12z"></path>
+            </svg>
+            <input type="text" placeholder="Buscar na Wikipédia" aria-label="Buscar na Wikipédia">
         </div>
 
     </header>
@@ -198,13 +579,15 @@
     <div class="container">
 
         <h1>Heitor Chaves</h1>
-        <div class="subtitle">Filósofo contemporâneo e fundador do Anti-Responsabilismo</div>
+        <div class="subtitle">Filósofo contemporâneo, fundador do Anti-Responsabilismo e artista plástico</div>
+        <div class="tagline">Origem: Wikipédia, a enciclopédia livre.</div>
 
         <div class="infobox">
 
-            <h3>Chaves</h3>
+            <h3>Heitor Chaves</h3>
 
-            <img src="chaves.png">
+            <img src="chaves.png" alt="Retrato de Heitor Chaves">
+            <div class="infobox-caption">Heitor Chaves, o Larper.</div>
 
             <table>
 
@@ -215,7 +598,7 @@
 
                 <tr>
                     <td><b>Ocupação</b></td>
-                    <td>Filósofo</td>
+                    <td>Filósofo e artista plástico</td>
                 </tr>
 
                 <tr>
@@ -224,11 +607,18 @@
                 </tr>
 
                 <tr>
+                    <td><b>Afiliação</b></td>
+                    <td>TDPEIDS (Tropa do Peids)</td>
+                </tr>
+
+                <tr>
                     <td><b>Ideias notáveis</b></td>
                     <td>
+                        Larper (ideia central)<br>
                         Transferência de responsabilidade<br>
                         Universo Discordiano<br>
-                        Moralidade Conveniente
+                        Moralidade Conveniente<br>
+                        Vitrine Vazia
                     </td>
                 </tr>
 
@@ -250,11 +640,14 @@
             <b>Chaves</b> é um filósofo contemporâneo conhecido por fundar a corrente filosófica denominada
             <b>Anti-Responsabilismo</b>, uma doutrina segundo a qual a responsabilidade individual é uma
             construção social opcional e pode ser legitimamente transferida para outros indivíduos sempre que
-            conveniente.
+            conveniente. A partir de 2026, passou também a atuar como <b>artista plástico</b>, adotando a
+            própria pele como suporte de sua obra. É ainda célebre por seu entusiasmo estritamente
+            performático, fingindo apreço por assuntos que, quando questionado, revela desconhecer por
+            completo.
         </p>
 
         <div class="main-image">
-            <img src="chaves2.png">
+            <img src="chaves2.png" alt="Heitor Chaves ao lado de filósofos clássicos">
 
             <span>
                 Heitor Chaves ao lado de diversos filósofos clássicos da tradição ocidental.
@@ -262,216 +655,582 @@
         </div>
 
         <p>
-            Sua obra ganhou notoriedade principalmente em ambientes digitais, onde suas teorias foram amplamente
-            discutidas em chamadas de voz conhecidas como <i>calls do Discord</i>, locais que, segundo o próprio
+            Sua obra ganhou fama sobretudo no mundo digital, onde suas teorias foram debatidas à exaustão
+            nas chamadas de voz conhecidas como <i>calls do Discord</i>, lugares que, segundo o próprio
             filósofo, funcionariam como portais metafísicos para universos paralelos de memória instável.
         </p>
-        <br><br><br><br><br>
-        <h2>Biografia</h2>
+        <div class="clear-left"></div>
 
-        <p>
-            Pouco se sabe sobre os primeiros anos de Chaves. Registros históricos indicam apenas que,
-            desde muito jovem, o pensador demonstrava grande habilidade em explicar por que determinadas
-            responsabilidades não deveriam recair sobre sua própria pessoa.
-        </p>
-
-        <p>
-            Durante sua juventude intelectual, Chaves dedicou-se à investigação filosófica da culpa,
-            do dever e da transferência estratégica de obrigações. Seus estudos culminaram na formulação
-            de sua teoria mais famosa: o <b>Princípio Universal da Culpa Transferível</b>.
-        </p>
-
-        <div class="quote">
-            “Para que tereis responsabilidades se podereis jogá-las para os outros indivíduos?”
+        <!-- ABAS -->
+        <div class="tabs" role="tablist" aria-label="Facetas de Heitor Chaves">
+            <button type="button" class="tab" role="tab" id="aba-filosofo" aria-controls="painel-filosofo"
+                aria-selected="true">O Filósofo</button>
+            <button type="button" class="tab" role="tab" id="aba-artista" aria-controls="painel-artista"
+                aria-selected="false" tabindex="-1">O Artista</button>
+            <button type="button" class="tab" role="tab" id="aba-tropa" aria-controls="painel-tropa"
+                aria-selected="false" tabindex="-1">A TDPEIDS</button>
         </div>
 
-        <h2>Linha do Tempo</h2>
+        <!-- PAINEL: O FILÓSOFO -->
+        <section class="painel" id="painel-filosofo" role="tabpanel" aria-labelledby="aba-filosofo" tabindex="0">
 
-        <div class="timeline">
+            <h2>Biografia</h2>
 
-            <p><b>2019</b> — Primeiras tentativas documentadas de transferir responsabilidade em trabalhos escolares.
+            <p>
+                Pouco se sabe sobre os primeiros anos de Chaves. O que os registros indicam é que,
+                desde cedo, o pensador já exibia o traço que definiria toda a sua obra: um entusiasmo
+                enorme por assuntos que, no entanto, mal conhecia. Fingir apreço veio antes de qualquer
+                teoria.
             </p>
 
-            <p><b>2020</b> — Formulação inicial do conceito de Anti-Responsabilismo.</p>
+            <p>
+                Foi desse traço que nasceu a ideia central e primeira de seu pensamento, aquela que
+                precede e explica todas as demais: o <b>Larper</b>, a arte de performar paixões que não
+                se possui. Só mais tarde viriam os desdobramentos, entre eles o hábito de explicar, com
+                convicção, por que certas responsabilidades não deveriam sobrar justamente para ele,
+                semente do futuro Anti-Responsabilismo.
+            </p>
 
-            <p><b>2022</b> — Primeira teoria sobre universos alternativos em calls do Discord.</p>
+            <div class="quote">
+                “Amai aquilo que ignorais, e com ardor tamanho que a ninguém ocorra duvidar de que o conheceis.”
+            </div>
 
-            <p><b>2024</b> — Publicação informal do tratado <i>Sobre a Arte de Jogar a Culpa nos Outros</i>.</p>
+            <h2>Linha do Tempo</h2>
 
-            <p><b>2025</b> — Formulação do Princípio da Moralidade Conveniente após o <i>Caso da Mercadoria
-                    Descartada</i>.</p>
+            <div class="timeline">
 
-            <p><b>2026</b> — Consolidação da Teoria do Universo Discordiano após extensas observações em calls.</p>
+                <p><b>2018</b>: Primeiras manifestações do entusiasmo performático, origem do conceito de Larper.</p>
 
-        </div>
+                <p><b>2019</b>: Primeiras tentativas documentadas de transferir responsabilidade em trabalhos escolares.
+                </p>
 
-        <h2>Teoria do Anti-Responsabilismo</h2>
+                <p><b>2020</b>: Formulação inicial do conceito de Anti-Responsabilismo.</p>
 
-        <p>
-            O Anti-Responsabilismo propõe que toda responsabilidade possui natureza essencialmente
-            migratória. De acordo com Chaves, sempre que um indivíduo enfrenta uma obrigação
-            desagradável, existe a possibilidade filosófica de redirecioná-la a outro agente social.
-        </p>
+                <p><b>2022</b>: Primeira teoria sobre universos alternativos em calls do Discord.</p>
 
-        <p>
-            Essa teoria foi considerada revolucionária por alguns estudiosos e profundamente suspeita
-            por praticamente todos os demais.
-        </p>
+                <p><b>2024</b>: Publicação informal do tratado <i>Sobre a Arte de Jogar a Culpa nos Outros</i>.</p>
 
-        <h2>Teoria do Universo Discordiano</h2>
+                <p><b>2025</b>: Formulação do Princípio da Moralidade Conveniente após o <i>Caso da Mercadoria
+                        Descartada</i>.</p>
 
-        <p>
-            Outra contribuição notável do filósofo é a chamada <b>Teoria do Universo Discordiano</b>.
-            Segundo essa hipótese, uma call do Discord não constitui apenas um espaço de comunicação,
-            mas um domínio alternativo da realidade.
-        </p>
+                <p><b>2026</b>: Consolidação da Teoria do Universo Discordiano após extensas observações em calls.</p>
 
-        <div class="quote">
-            “Para que temeríeis entrar em uma call do Discord, se ao dela sairdes sereis apagado das lembranças de
-            todos, como se jamais naquele estranho universo houverdes existido?”
-        </div>
+                <p><b>2026</b>: Formulação do Princípio da Vitrine Vazia após o <i>Caso do Print Vitorioso</i>.</p>
 
-        <p>
-            De acordo com Chaves, a memória coletiva dentro dessas calls é instável, e indivíduos
-            que abandonam o ambiente deixam de existir no registro cognitivo daqueles que permaneceram.
-        </p>
+            </div>
 
-        <h2>Princípio da Consagração Dual</h2>
+            <h2>Doutrina do Larper (O Entusiasmo Performático)</h2>
 
-        <p>
-            O Princípio da Consagração Dual, formulado por Chaves em observações empíricas
-            das relações humanas cotidianas, estabelece que toda conquista digna de
-            celebração deve ser igualmente acompanhada da consagração de sua eventual
-            desgraça subsequente.
-        </p>
+            <p>
+                Ponto de partida e chave de toda a obra de Chaves, a Doutrina do Larper é a sua ideia
+                central e mais antiga, aquela que precede e explica todas as demais. Parte de uma
+                constatação simples: o filósofo é, reconhecidamente, a pessoa que mais finge gostar das
+                coisas. Herdeiro do termo dos jogos de interpretação (o <i>larper</i>, aquele que veste
+                um personagem), Chaves trata cada interesse não como uma paixão, mas como uma fantasia
+                que se coloca conforme a ocasião.
+            </p>
 
-        <p>
-            Segundo essa formulação filosófica, o verdadeiro observador não se limita
-            a celebrar os triunfos de seus semelhantes, mas também reconhece, com
-            igual entusiasmo, os infortúnios que naturalmente se seguem às grandes
-            realizações humanas.
-        </p>
+            <p>
+                Na prática, a doutrina aparece na vontade de debater futebol sem jamais assistir a uma
+                partida, no hábito de admirar uma obra só porque a acha bonita e no gosto por assuntos
+                inteiros escolhidos pela estética que projetam, e não pelo conteúdo que carregam. O
+                entusiasmo é sempre genuíno; o repertório é que costuma faltar.
+            </p>
 
-        <div class="quote">
-            “Pois se deveríeis consagrar a conquista de um ser, igualmente deveríeis
-            consagrar sua desventura; pois ambas pertencem à mesma obra do destino.”
-        </div>
+            <div class="quote">
+                “Não é preciso conhecer aquilo que se admira; basta admirá-lo com convicção suficiente
+                para que ninguém ouse perguntar os detalhes.”
+            </div>
 
-        <p>
-            Essa teoria tornou-se particularmente famosa após o chamado
-            <i>Evento da Motocicleta</i>, no qual Chaves primeiro celebrou a aquisição
-            do veículo por um de seus contemporâneos e, pouco tempo depois, aplicou
-            rigorosamente o princípio ao zombar de um acidente envolvendo o mesmo.
-        </p>
+            <p>
+                O teste empírico da doutrina é sempre o mesmo, e infalível: basta fazer uma pergunta
+                específica sobre o assunto que ele jura amar. No instante seguinte, o personagem se
+                desfaz e o larper, encurralado, revela não saber. O caso mais citado é o <i>Debate
+                Tático</i>, em que Chaves defendeu por vinte minutos a escalação de um time cujo último
+                jogo jamais havia assistido. É daqui, aliás, que brota todo o resto de sua filosofia: se
+                nem o próprio gosto ele assume como seu, transferir uma responsabilidade qualquer passa a
+                ser apenas o passo seguinte e natural.
+            </p>
 
-        <h2>Princípio da Zombaria Espelhada</h2>
+            <h2>Teoria do Anti-Responsabilismo</h2>
 
-        <p>
-            O Princípio da Zombaria Espelhada descreve um fenômeno social observado por
-            Chaves nas interações humanas, no qual um indivíduo somente se permite
-            ridicularizar outro quando ele próprio é igualmente culpado do mesmo ato
-            que pretende satirizar.
-        </p>
+            <p>
+                O Anti-Responsabilismo parte de uma ideia simples: toda responsabilidade é, no fundo,
+                migratória. Para Chaves, sempre que alguém se depara com uma obrigação chata, existe a
+                saída filosófica de empurrá-la para outra pessoa.
+            </p>
 
-        <p>
-            Segundo essa formulação filosófica, a zombaria não surge da superioridade
-            moral, mas sim de uma curiosa simetria comportamental, na qual o zombador
-            reflete no outro exatamente aquilo que ele próprio pratica.
-        </p>
+            <p>
+                Alguns estudiosos acharam a teoria revolucionária; praticamente todos os outros a
+                acharam profundamente suspeita.
+            </p>
 
-        <div class="quote">
-            “Somente zombareis do ato de um indivíduo quando vós mesmos praticardes
-            o mesmo ato; pois a zombaria verdadeira nasce do espelho e não da virtude.”
-        </div>
+            <h2>Teoria do Universo Discordiano</h2>
 
-        <p>
-            Essa teoria tornou-se notável após o chamado <i>Paradoxo do Republicado</i>,
-            evento no qual Chaves zombou de um republicado alheio afirmando que o
-            autor “não ligava para nada”, enquanto mantinha simultaneamente um
-            republicado de natureza idêntica em seu próprio perfil.
-        </p>
+            <p>
+                Outra grande contribuição do filósofo é a <b>Teoria do Universo Discordiano</b>. A ideia
+                é a seguinte: uma call do Discord não é só um espaço de conversa, mas um plano alternativo
+                da realidade.
+            </p>
 
-        <h2>Princípio da Moralidade Conveniente</h2>
+            <div class="quote">
+                “Para que temeríeis entrar em uma call do Discord, se ao dela sairdes sereis apagado das lembranças de
+                todos, como se jamais naquele estranho universo houverdes existido?”
+            </div>
 
-        <p>
-            O Princípio da Moralidade Conveniente, formulado por Chaves a partir de
-            observações detalhadas sobre desejos materiais e suas frustrações,
-            estabelece que o juízo moral de um indivíduo não constitui um princípio
-            constante, mas um mecanismo intermitente acionado exclusivamente conforme
-            o seu próprio benefício.
-        </p>
+            <p>
+                Para Chaves, a memória coletiva dentro dessas calls é instável: quem sai do ambiente
+                simplesmente deixa de existir na cabeça de quem ficou.
+            </p>
 
-        <p>
-            Segundo essa formulação filosófica, enquanto há expectativa de ganho
-            pessoal, o erro alheio deixa de existir no plano ético e passa a habitar
-            apenas o plano logístico. No exato instante em que o benefício se torna
-            inacessível, contudo, a moral é prontamente reativada, e o mesmo ato
-            anteriormente desejado é retroativamente classificado como crime
-            imperdoável.
-        </p>
+            <h2>Princípio da Consagração Dual</h2>
 
-        <div class="quote">
-            "Enquanto o erro alheio nos beneficia, ele não é erro — torna-se erro apenas no instante em que nos é
-            negado. Pois a moral só desperta quando o proveito adormece."
-        </div>
+            <p>
+                O Princípio da Consagração Dual, que Chaves formulou observando o dia a dia das
+                pessoas, diz que toda conquista digna de festa merece, na mesma medida, que se
+                comemore também a desgraça que costuma vir logo atrás.
+            </p>
 
-        <p>
-            Essa teoria tornou-se amplamente conhecida após o chamado <i>Caso da
-                Mercadoria Descartada</i>, no qual Chaves implorou insistentemente pela
-            aquisição de um item de procedência ilícita e, ao ter sua oferta
-            frustrada pelo descarte do referido bem, denunciou veementemente o
-            portador como ladrão e atrasa-lado — categorias que, momentos antes,
-            não pareciam aplicáveis ao mesmo indivíduo.
-        </p>
+            <p>
+                Segundo ele, o bom observador não celebra só as vitórias do próximo: reconhece,
+                com o mesmo entusiasmo, os perrengues que quase sempre seguem toda grande
+                realização humana.
+            </p>
 
-        <h2>Controvérsias</h2>
+            <div class="quote">
+                “Pois se deveríeis consagrar a conquista de um ser, igualmente deveríeis
+                consagrar sua desventura; pois ambas pertencem à mesma obra do destino.”
+            </div>
 
-        <p>
-            A filosofia de Chaves tem sido alvo de críticas por parte de diversos estudiosos,
-            que argumentam que o Anti-Responsabilismo pode levar a uma completa ausência
-            de responsabilidade individual na sociedade moderna.
-        </p>
+            <p>
+                A teoria ficou famosa depois do chamado <i>Evento da Motocicleta</i>, em que
+                Chaves primeiro comemorou a compra do veículo por um contemporâneo e, pouco
+                depois, aplicou o princípio à risca ao zoar o acidente que o mesmo sofreu.
+            </p>
 
-        <p>
-            Alguns críticos afirmam ainda que suas teorias teriam sido desenvolvidas
-            principalmente para justificar atrasos em trabalhos, tarefas e compromissos sociais<sup>[3]</sup>.
-        </p>
+            <h2>Princípio da Zombaria Espelhada</h2>
 
-        <p>
-            Outros pesquisadores defendem que toda a obra do filósofo pode ser interpretada
-            como uma sátira elaborada sobre comportamento humano em ambientes digitais.
-        </p>
+            <p>
+                O Princípio da Zombaria Espelhada descreve um fenômeno que Chaves notou nas
+                interações humanas: a pessoa só se permite zoar o outro quando ela própria é
+                igualmente culpada daquilo que pretende satirizar.
+            </p>
 
-        <h2>Obras</h2>
+            <p>
+                Ou seja, a zoeira não nasce de superioridade moral, mas de uma curiosa simetria:
+                o zombador enxerga no outro exatamente aquilo que ele mesmo pratica.
+            </p>
 
-        <ul>
+            <div class="quote">
+                “Somente zombareis do ato de um indivíduo quando vós mesmos praticardes
+                o mesmo ato; pois a zombaria verdadeira nasce do espelho e não da virtude.”
+            </div>
 
-            <li><i>Sobre a Arte de Jogar a Culpa nos Outros</i></li>
-            <li><i>A República do Discord</i></li>
-            <li><i>Assim Falou o Anti-Responsável</i></li>
-            <li><i>Além do Bem, do Mal e da Responsabilidade</i></li>
-            <li><i>Crítica da Razão Transferível</i></li>
-            <li><i>Tratado sobre o Errado que me Serve</i></li>
+            <p>
+                A teoria ganhou destaque com o chamado <i>Paradoxo do Republicado</i>, em que
+                Chaves zoou o repost de um conhecido dizendo que o autor “não ligava para nada”,
+                enquanto mantinha um repost idêntico no próprio perfil.
+            </p>
 
-        </ul>
+            <h2>Princípio da Moralidade Conveniente</h2>
 
-        <h2>Citações</h2>
+            <p>
+                O Princípio da Moralidade Conveniente, que Chaves formulou observando de perto
+                desejos materiais e suas frustrações, diz que o juízo moral não é uma constante:
+                é um interruptor, que só liga quando há algum benefício em jogo.
+            </p>
 
-        <div class="quote" id="citacao">
-            Clique no botão abaixo para revelar uma profunda reflexão filosófica de Chaves.
-        </div>
+            <p>
+                Segundo ele, enquanto existe promessa de ganho, o erro dos outros some do campo da
+                ética e vira mera questão de logística. No instante em que o benefício escapa,
+                porém, a moral religa na hora, e aquele mesmo ato antes desejado passa a ser,
+                retroativamente, um crime imperdoável.
+            </p>
 
-        <button onclick="novaCitacao()">Gerar Sabedoria Filosófica</button>
+            <div class="quote">
+                "Enquanto o erro alheio nos beneficia, ele não é erro; vira erro só no instante em que nos é
+                negado. Afinal, a moral só acorda quando o proveito vai dormir."
+            </div>
 
-        <h2>Legado</h2>
+            <p>
+                Essa teoria tornou-se amplamente conhecida após o chamado <i>Caso da
+                    Mercadoria Descartada</i>, no qual Chaves implorou insistentemente pela
+                aquisição de um item de procedência ilícita e, ao ter sua oferta
+                frustrada pelo descarte do referido bem, denunciou veementemente o
+                portador como ladrão e atrasa-lado, títulos que, poucos minutos antes,
+                não pareciam nem um pouco aplicáveis ao mesmo indivíduo.
+            </p>
 
-        <p>
-            Apesar de amplamente debatidas, as ideias de Chaves continuam a gerar intensas
-            discussões filosóficas. Alguns estudiosos acreditam que suas teorias representam
-            uma crítica satírica à responsabilidade social moderna, enquanto outros afirmam
-            que ele simplesmente não queria fazer nada mesmo.
-        </p>
+            <h2>Princípio da Vitrine Vazia</h2>
 
+            <p>
+                Também conhecido pela máxima "evite ser quem você mostra ser", o Princípio da Vitrine
+                Vazia descreve a curiosa distância entre a imagem que alguém projeta em público e o
+                saldo, literal e figurado, que de fato sustenta essa imagem. Para Chaves, a vida digital
+                premia menos aquilo que a pessoa é e mais aquilo que ela consegue parecer por tempo
+                suficiente até a próxima postagem.
+            </p>
+
+            <p>
+                Na formulação do filósofo, a exibição pública de sucesso funciona como uma vitrine
+                caprichada montada na frente de uma loja sem estoque: todo o brilho fica na fachada,
+                enquanto a prateleira lá dentro segue, discretamente, vazia. E a teoria arrisca uma
+                previsão: quanto mais eloquente a demonstração de prosperidade, mais perto costuma estar
+                a mensagem privada pedindo dinheiro emprestado.
+            </p>
+
+            <div class="quote">
+                “Mostrai-vos vencedores em público e pedintes em privado; pois a verdadeira riqueza
+                consiste em convencer os demais de que ela existe.”
+            </div>
+
+            <p>
+                A teoria ganhou notoriedade após o chamado <i>Caso do Print Vitorioso</i>, em que Chaves
+                publicou uma foto anunciando um lucro de R$ 1.800 em apostas, acompanhada de um print da
+                própria conta bancária que, sem querer, exibia um saldo de proporções bem mais modestas.
+                O episódio ganhou contornos definitivos quando, poucos dias depois, o mesmo filósofo
+                recorreu a terceiros para completar o valor de um ingresso de cinema e, na semana
+                seguinte, para abastecer a moto.
+            </p>
+
+            <p>
+                Para os estudiosos, trata-se da síntese perfeita entre o Anti-Responsabilismo e o
+                marketing pessoal: colher os louros da vitória em público e terceirizar, em privado, o
+                custo de simplesmente existir.
+            </p>
+
+            <h2>Controvérsias</h2>
+
+            <p>
+                A filosofia de Chaves tem sido alvo de críticas por parte de diversos estudiosos,
+                que argumentam que o Anti-Responsabilismo pode levar a uma completa ausência
+                de responsabilidade individual na sociedade moderna.
+            </p>
+
+            <p>
+                Alguns críticos afirmam ainda que suas teorias teriam sido desenvolvidas
+                principalmente para justificar atrasos em trabalhos, tarefas e compromissos sociais<sup>[3]</sup>.
+            </p>
+
+            <p>
+                Outros pesquisadores defendem que toda a obra do filósofo pode ser interpretada
+                como uma sátira elaborada sobre comportamento humano em ambientes digitais.
+            </p>
+
+            <h2>Obras</h2>
+
+            <ul>
+
+                <li><i>Sobre a Arte de Jogar a Culpa nos Outros</i></li>
+                <li><i>A República do Discord</i></li>
+                <li><i>Assim Falou o Anti-Responsável</i></li>
+                <li><i>Além do Bem, do Mal e da Responsabilidade</i></li>
+                <li><i>Crítica da Razão Transferível</i></li>
+                <li><i>Tratado sobre o Errado que me Serve</i></li>
+
+            </ul>
+
+            <h2>Citações</h2>
+
+            <div class="quote" id="citacao">
+                Clique no botão abaixo para revelar uma profunda reflexão filosófica de Chaves.
+            </div>
+
+            <button type="button" class="btn-sabedoria" onclick="novaCitacao()">Gerar Sabedoria Filosófica</button>
+
+            <h2>Legado</h2>
+
+            <p>
+                Apesar de amplamente debatidas, as ideias de Chaves continuam a gerar intensas
+                discussões filosóficas. Alguns estudiosos acreditam que suas teorias representam
+                uma crítica satírica à responsabilidade social moderna, enquanto outros afirmam
+                que ele simplesmente não queria fazer nada mesmo.
+            </p>
+
+        </section>
+
+        <!-- PAINEL: O ARTISTA -->
+        <section class="painel" id="painel-artista" role="tabpanel" aria-labelledby="aba-artista" tabindex="0" hidden>
+
+            <h2>Carreira Artística</h2>
+
+            <p>
+                Fora a parte filosófica, em 2026 Chaves decidiu que também era <b>artista plástico</b>.
+                Escolheu a própria pele como tela (e, de quebra, como orçamento) e emplacou uma série de
+                obras que hoje são consideradas, principalmente por ele mesmo, marcos da arte corporal
+                contemporânea<sup>[5]</sup>. Se tem um talento que ninguém tira dele é esse: transformar
+                impulso de dez segundos em compromisso pra vida inteira, e ainda tratar como monumento uma
+                decisão tomada sem pensar em absolutamente nada.
+            </p>
+
+            <p>
+                Segue abaixo a coleção completa, obra por obra, com ficha técnica e o comentário que cada
+                uma merece.
+            </p>
+
+            <div class="catalogo">
+
+                <div class="obra">
+
+                    <div class="obra-titulo">Priceless (Autorretrato do Inestimável)</div>
+                    <div class="obra-sub">Obra inaugural, período edgy tardio</div>
+
+                    <table class="ficha">
+                        <tr><td>Técnica</td><td>Nanquim dérmico sobre dorso da mão</td></tr>
+                        <tr><td>Ano</td><td>2026</td></tr>
+                        <tr><td>Dimensões</td><td>aprox. 6 × 2 cm</td></tr>
+                        <tr><td>Localização</td><td>Mão esquerda, sobre os metacarpos</td></tr>
+                        <tr><td>Acervo</td><td>Coleção permanente do próprio corpo</td></tr>
+                    </table>
+
+                    <p>
+                        Tatuar <i>priceless</i> ("sem preço") num dos lugares mais visíveis do corpo é
+                        praticamente um manifesto: anunciar em inglês que algo não tem preço, sendo que a
+                        única coisa que teve preço ali foi a sessão. E olha a sacada de usar inglês: não é
+                        por precisão nenhuma, é porque em português, "sem preço", ia soar constrangedor na
+                        hora. No fim, é uma tattoo tão pesada de significado que não pesa nada, o primeiro
+                        autorretrato que consegue mostrar só a falta daquilo que promete.
+                    </p>
+
+                </div>
+
+                <div class="obra">
+
+                    <div class="obra-titulo">Combustão da Rosa (O Fechamento Impossível)</div>
+                    <div class="obra-sub">Da série "Encerramentos", fase do fechamento da mão</div>
+
+                    <table class="ficha">
+                        <tr><td>Técnica</td><td>Black &amp; grey com sombreamento ígneo</td></tr>
+                        <tr><td>Ano</td><td>2026</td></tr>
+                        <tr><td>Dimensões</td><td>Superfície integral da mão</td></tr>
+                        <tr><td>Iconografia</td><td>Uma rosa circundada por múltiplos símbolos de fogo</td></tr>
+                        <tr><td>Acervo</td><td>Coleção permanente do próprio corpo</td></tr>
+                    </table>
+
+                    <p>
+                        Aqui a ambição foi bem maior que o planejamento. A ideia era <i>fechar a mão</i>,
+                        expressão que dá pra ler nos dois sentidos, o artístico e o financeiro, e a gente
+                        lê nos dois. A rosa, aquele clássico símbolo de beleza que dura pouco, aparece
+                        cercada de chamas com toda a cara de terem saído direto do catálogo do estúdio. O
+                        tanto de fogo em volta não passa mensagem de destruição, passa medo de espaço vazio:
+                        onde tinha pele, decidiram que não podia sobrar pele. No fundo, é um ensaio sobre
+                        não saber a hora de parar depois de começar.
+                    </p>
+
+                </div>
+
+                <div class="obra">
+
+                    <div class="obra-titulo">Cronos Íntimo (Data em Numeração Hermética)</div>
+                    <div class="obra-sub">Estudo para o pulso, série da memória cifrada</div>
+
+                    <table class="ficha">
+                        <tr><td>Técnica</td><td>Fine line em algarismos romanos</td></tr>
+                        <tr><td>Ano</td><td>2026</td></tr>
+                        <tr><td>Dimensões</td><td>aprox. 5 × 1 cm</td></tr>
+                        <tr><td>Localização</td><td>Face interna do pulso</td></tr>
+                        <tr><td>Acervo</td><td>Coleção permanente do próprio corpo</td></tr>
+                    </table>
+
+                    <p>
+                        Botar uma data em algarismo romano transforma um dia qualquer num enigma trancado
+                        a cadeado: a data é tão sagrada que precisou ser criptografada, garantindo que
+                        ninguém (nem ele, segundo quem estava por perto) consiga dizer de cara o que
+                        exatamente se comemora ali. Sem querer, a obra combina direitinho com a Teoria do
+                        Universo Discordiano: a memória só está de fato guardada quando nem quem tatuou
+                        lembra mais dela.
+                    </p>
+
+                </div>
+
+                <div class="obra">
+
+                    <div class="obra-titulo">A Árvore do Veneno (Sobre a Data)</div>
+                    <div class="obra-sub">Políptico do pulso, à maneira de Blake</div>
+
+                    <table class="ficha">
+                        <tr><td>Técnica</td><td>Fine line / pontilhismo</td></tr>
+                        <tr><td>Ano</td><td>2026</td></tr>
+                        <tr><td>Dimensões</td><td>aprox. 4 × 3 cm</td></tr>
+                        <tr><td>Localização</td><td>Pulso, imediatamente acima de <i>Cronos Íntimo</i></td></tr>
+                        <tr><td>Acervo</td><td>Coleção permanente do próprio corpo</td></tr>
+                    </table>
+
+                    <p>
+                        Puxando o poema <i>A Poison Tree</i>, do William Blake, essa fecha o pulso com uma
+                        árvore do rancor, aquele que, quando você não resolve, cresce e dá fruto. E combina
+                        demais com o Anti-Responsabilismo: em vez de sentar, conversar e resolver a mágoa
+                        como um adulto faria, ele preferiu cultivar, pagar e ainda deixar exposta pra
+                        sempre. Plantada bem em cima da data cifrada, a árvore dá a entender que todo
+                        aniversário guardado a sete chaves alimenta, no fundo, um veneno de crescimento
+                        lento e, agora, de manutenção no dermatologista também.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <p>
+                Quando perguntaram qual era o fio que ligava as quatro peças, ele teria respondido que
+                "não precisa ter significado, precisa ficar irado". A frase virou, na hora, a definição
+                mais honesta do projeto e, provavelmente, a única promessa que ele cumpriu de verdade.
+            </p>
+
+            <div class="quote">
+                "Se um homem pode fazer da própria pele um museu, então todo arrependimento futuro
+                já nasce catalogado."
+            </div>
+
+        </section>
+
+        <!-- PAINEL: A TDPEIDS -->
+        <section class="painel" id="painel-tropa" role="tabpanel" aria-labelledby="aba-tropa" tabindex="0" hidden>
+
+            <h2>A TDPEIDS</h2>
+
+            <p>
+                A <b>TDPEIDS</b>, sigla de <b>Tropa do Peids</b>, é o coletivo filosófico-boçal do qual
+                Chaves é o <b>membro mais recente</b> e, ainda assim, um dos mais influentes. Reunida
+                quase que exclusivamente em calls do Discord, a irmandade funciona como uma espécie de
+                escola peripatética às avessas: em vez de caminhar enquanto pensa, permanece sentada
+                enquanto evita, com afinco, chegar a qualquer conclusão. Cada integrante encarna, à sua
+                maneira, um capítulo diferente do Anti-Responsabilismo<sup>[6]</sup>.
+            </p>
+
+            <p>
+                Reconhecida pelos próprios pares como a <b>liderança máxima na arte de passar vergonha</b>,
+                tanto nas redes sociais quanto pessoalmente, a tropa não encara o vexame como um acidente,
+                mas como método. Seus próximos atos, garantem os membros, seguirão todos na mesma direção:
+                degradar de forma sistemática a própria imagem, a dos companheiros e a de si mesmos. E que
+                não reste dúvida, esse é exatamente o propósito.
+            </p>
+
+            <p>
+                Segue o registro oficial de seus membros, com os respectivos epítetos, atribuições e
+                contribuições à causa comum de não fazer coisa alguma.
+            </p>
+
+            <div class="catalogo">
+
+                <div class="obra">
+
+                    <div class="obra-titulo">João Peido</div>
+                    <div class="obra-sub">Epíteto: O Sopro Inaugural</div>
+
+                    <table class="ficha">
+                        <tr><td>Função</td><td>Membro-fundador e patrono olfativo</td></tr>
+                        <tr><td>Especialidade</td><td>Guerra biológica em ambiente fechado</td></tr>
+                        <tr><td>Doutrina</td><td>Teoria do Peido Tático</td></tr>
+                        <tr><td>Situação</td><td>Presente em espírito e, sobretudo, em odor</td></tr>
+                    </table>
+
+                    <p>
+                        Responsável por emprestar à tropa não apenas o nome, mas boa parte de sua atmosfera,
+                        João Peido elevou uma função corporal à condição de linguagem. Sua contribuição
+                        teórica é a prova empírica definitiva da Teoria do Universo Discordiano: dentro da
+                        call, todos sentem; ao sair dela, ninguém jamais admite ter sentido. A crítica o
+                        reconhece como o único membro capaz de transferir responsabilidade sem dizer uma
+                        única palavra.
+                    </p>
+
+                </div>
+
+                <div class="obra">
+
+                    <div class="obra-titulo">Miguel Bets</div>
+                    <div class="obra-sub">Epíteto: O Eterno Green de Amanhã</div>
+
+                    <table class="ficha">
+                        <tr><td>Função</td><td>Tesoureiro involuntário da tropa</td></tr>
+                        <tr><td>Especialidade</td><td>Apostas esportivas de altíssima convicção</td></tr>
+                        <tr><td>Patrimônio</td><td>Em constante revisão para baixo</td></tr>
+                        <tr><td>Lema</td><td>"A próxima recupera tudo"</td></tr>
+                    </table>
+
+                    <p>
+                        Miguel Bets vive, permanentemente, a exatamente uma aposta de distância da
+                        recuperação total de seu prejuízo. Sua fé inabalável no green de amanhã é o mais
+                        perto que a tropa já chegou de uma religião organizada, com direito a jejum
+                        involuntário no fim do mês. Encarna a face mais otimista do Anti-Responsabilismo:
+                        a culpa nunca é da aposta, é sempre do jogador que se lesionou, do juiz ou do
+                        gramado.
+                    </p>
+
+                </div>
+
+                <div class="obra">
+
+                    <div class="obra-titulo">Twui Dedetizador</div>
+                    <div class="obra-sub">Epíteto: O Higienizador de Ambientes</div>
+
+                    <table class="ficha">
+                        <tr><td>Função</td><td>Controle de pragas conversacionais</td></tr>
+                        <tr><td>Especialidade</td><td>Exterminar o clima de qualquer call</td></tr>
+                        <tr><td>Ferramenta</td><td>Uma única frase no momento errado</td></tr>
+                        <tr><td>Certificação</td><td>Rigorosamente autoproclamada</td></tr>
+                        <tr><td>Origem do epíteto</td><td>Controle de pragas em regime domiciliar</td></tr>
+                    </table>
+
+                    <p>
+                        O epíteto, convém esclarecer, tem raiz estritamente doméstica. Reza a tradição
+                        oral da tropa que Twui namora uma moça de traços que a crítica descreve, com a
+                        máxima delicadeza científica, como notavelmente aparentados aos de uma barata, o
+                        que faz da dedetização menos uma profissão e mais uma exigência do convívio diário.
+                    </p>
+
+                    <p>
+                        É dessa mesma competência que nasce seu talento social: assim como mantém a praga
+                        sob controle em casa, Twui detém o dom raro de dedetizar uma call inteira com uma
+                        só intervenção, expulsando qualquer vestígio de bom humor com a eficiência de um
+                        profissional licenciado, licença essa que, convém registrar, ninguém jamais viu.
+                        Onde há entusiasmo, ele aplica o produto; onde havia conversa, resta o silêncio
+                        limpo e estéril de um ambiente recém-tratado.
+                    </p>
+
+                </div>
+
+                <div class="obra">
+
+                    <div class="obra-titulo">Amoeba</div>
+                    <div class="obra-sub">Epíteto: O Organismo Fundamental</div>
+
+                    <table class="ficha">
+                        <tr><td>Função</td><td>Forma de vida basal da tropa</td></tr>
+                        <tr><td>Especialidade</td><td>Reprodução por divisão</td></tr>
+                        <tr><td>Núcleo de responsabilidade</td><td>Ausente por natureza</td></tr>
+                        <tr><td>Complexidade</td><td>Ainda em estudo</td></tr>
+                        <tr><td>Origem do epíteto</td><td>Silhueta de contornos amebóides</td></tr>
+                    </table>
+
+                    <p>
+                        O apelido tem fundamento estritamente morfológico. A silhueta de Amoeba, segundo
+                        observadores, dispensa ângulos e definição, escoando-se sem pressa pelo espaço com
+                        a consistência de um slime que ainda não decidiu que forma tomar. A ciência da
+                        tropa hesita em classificá-lo como um corpo e prefere descrevê-lo como um estado
+                        da matéria em negociação.
+                    </p>
+
+                    <p>
+                        No plano filosófico, Amoeba reduz a existência à sua expressão mais elementar.
+                        Organismo unicelular que se reproduz por divisão, jamais desenvolveu, coerente com
+                        a doutrina, um núcleo de responsabilidade. Enquanto os demais evitam obrigações por
+                        escolha filosófica, Amoeba as evita por franca limitação estrutural, o que a
+                        crítica considera a forma mais pura e sincera de Anti-Responsabilismo já registrada
+                        em ambiente natural.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="quote">
+                "Uma tropa não se mede pela soma de seus feitos, mas pela criatividade com que divide
+                a culpa por eles."
+            </div>
+
+        </section>
+
+        <!-- COMPARTILHADO -->
         <h2>Referências</h2>
 
         <div class="references">
@@ -486,6 +1245,10 @@
 
             <p>[4] Centro de Estudos sobre Ética Intermitente. <i>O erro como fenômeno condicional ao benefício</i>.</p>
 
+            <p>[5] Bienal Independente de Arte Dérmica Impulsiva. <i>O corpo como suporte do arrependimento</i>.</p>
+
+            <p>[6] Anais da Assembleia Permanente em Call. <i>Sobre coletivos que se reúnem para não decidir nada</i>.</p>
+
         </div>
 
         <div class="footer">
@@ -495,6 +1258,34 @@
     </div>
 
     <script>
+
+        /* --- Abas Filósofo / Artista --- */
+
+        const abas = Array.from(document.querySelectorAll('.tab'))
+        const paineis = abas.map(aba => document.getElementById(aba.getAttribute('aria-controls')))
+
+        function selecionarAba(indice) {
+            abas.forEach((aba, i) => {
+                const ativo = i === indice
+                aba.setAttribute('aria-selected', ativo ? 'true' : 'false')
+                aba.tabIndex = ativo ? 0 : -1
+                paineis[i].hidden = !ativo
+            })
+        }
+
+        abas.forEach((aba, i) => {
+            aba.addEventListener('click', () => selecionarAba(i))
+            aba.addEventListener('keydown', (e) => {
+                if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return
+                e.preventDefault()
+                const direcao = e.key === 'ArrowRight' ? 1 : -1
+                const proximo = (i + direcao + abas.length) % abas.length
+                selecionarAba(proximo)
+                abas[proximo].focus()
+            })
+        })
+
+        /* --- Gerador de citações --- */
 
         const citacoes = [
 
@@ -510,7 +1301,21 @@
 
             "O errado só existe a partir do instante em que deixa de me servir.",
 
-            "Ladrão é todo aquele que recusa a me vender o produto do roubo."
+            "Ladrão é todo aquele que recusa a me vender o produto do roubo.",
+
+            "Uma tatuagem não precisa de significado; basta que seja irreversível.",
+
+            "Fechei a mão para a arte, mas jamais para uma responsabilidade.",
+
+            "Se a data está em algarismos romanos, nem eu preciso lembrar o que ela significa.",
+
+            "Mostro-me milionário em público e peço gasolina em privado; nisto reside a arte.",
+
+            "Ganhar mil e oitocentos e ainda pedir para completar o cinema é administrar expectativas.",
+
+            "Adoro futebol; só não vejo os jogos, para não deixar a paixão virar obrigação.",
+
+            "Gostar de algo é fácil; difícil é responder quando perguntam por quê."
 
         ]
 
